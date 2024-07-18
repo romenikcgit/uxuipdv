@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VendaMaster Pro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-cash-register"></i> VendaMaster Pro</h1>
+            <nav>
+                <button id="show-catalog" class="nav-button active"><i class="fas fa-store"></i> Catálogo</button>
+                <button id="show-management" class="nav-button"><i class="fas fa-cogs"></i> Gerenciar</button>
+                <button id="show-tables" class="nav-button"><i class="fas fa-chair"></i> Mesas</button>
+                <button id="show-history" class="nav-button"><i class="fas fa-history"></i> Histórico</button>
+                <div id="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-badge">0</span>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <section id="catalog-section">
+                <h2>Catálogo de Produtos</h2>
+                <div id="categories-container"></div>
+                <div id="product-grid"></div>
+            </section>
+
+            <section id="management-section" class="hidden">
+                <h2>Gerenciar Produtos e Categorias</h2>
+                <form id="add-category-form">
+                    <input type="text" id="category-name" placeholder="Nome da categoria" required>
+                    <button type="submit"><i class="fas fa-plus"></i> Adicionar Categoria</button>
+                </form>
+                <form id="add-product-form">
+                    <input type="text" id="product-name" placeholder="Nome do produto" required>
+                    <input type="number" id="product-price" placeholder="Preço" step="0.01" required>
+                    <select id="product-category" required>
+                        <option value="">Selecione uma categoria</option>
+                    </select>
+                    <button type="submit"><i class="fas fa-plus"></i> Adicionar Produto</button>
+                </form>
+                <div id="category-list"></div>
+                <div id="product-list"></div>
+            </section>
+
+            <section id="tables-section" class="hidden">
+                <h2>Gerenciar Mesas</h2>
+                <form id="add-table-form">
+                    <input type="text" id="table-name" placeholder="Nome/Número da mesa" required>
+                    <button type="submit"><i class="fas fa-plus"></i> Adicionar Mesa</button>
+                </form>
+                <div id="table-list"></div>
+            </section>
+
+            <section id="history-section" class="hidden">
+                <h2>Histórico de Vendas</h2>
+                <div id="sales-history"></div>
+            </section>
+        </main>
+
+        <div id="cart-menu" class="hidden">
+            <h2><i class="fas fa-shopping-cart"></i> Carrinho (<span id="cart-count">0</span> itens)</h2>
+            <ul id="cart-items"></ul>
+            <div id="cart-total">Total: R$ <span id="total-amount">0.00</span></div>
+            <select id="payment-method">
+                <option value="credit">Cartão de Crédito</option>
+                <option value="debit">Cartão de Débito</option>
+                <option value="pix">PIX</option>
+                <option value="cash">Dinheiro</option>
+            </select>
+            <div id="cash-payment" class="hidden">
+                <input type="number" id="cash-amount" placeholder="Valor em dinheiro" step="0.01">
+                <div id="change">Troco: R$ <span id="change-amount">0.00</span></div>
+            </div>
+            <button id="process-payment"><i class="fas fa-check"></i> Finalizar Compra</button>
+            <button id="print-order"><i class="fas fa-print"></i> Imprimir Comanda</button>
+        </div>
+    </div>
+
+    <div id="notification" class="hidden"></div>
+
+    <button id="counter-sale-button" class="nav-button"><i class="fas fa-cash-register"></i> Nova Venda no Balcão</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
